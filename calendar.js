@@ -158,7 +158,7 @@ function showCalendar(month, year) {
 				cell.value = year + "-" + parseInt(month+1) + "-" + k;
 
 				let avaivable = localStorage.getItem("licznik-"+cell.value);
-				if(avaivable>0)
+				if(avaivable > 0)
 				{
 					cell.style.backgroundColor = '#7e7e7e';
 					cell.style.borderRadius = 25 + 'rem';
@@ -168,7 +168,7 @@ function showCalendar(month, year) {
 
 				if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth())
 				{
-					ell.style.backgroundColor = '#bdbdbd';
+					cell.style.backgroundColor = '#bdbdbd';
 					cell.style.borderRadius = 25 + 'rem';
             	}
 
