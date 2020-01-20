@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="calendar">
+			<h2 class="calendar__header" id="monthAndYear"></h2>
+			<table id="calendar">
+				<tr>
+					<th>N</th>
+					<th>P</th>
+					<th>W</th>
+					<th>Ś</th>
+					<th>C</th>
+					<th>P</th>
+					<th>S</th>
+				</tr>
+				<tbody id="calendar-body"></tbody>
+			</table>
+			<button type="button" id="previous" onclick="previous()">x</button>
+			<button type="button" id="next" onclick="next()">x</button>
+		</div>
+		<div class="alert-off" id="menu">
+			<div id="menu__left">
+				<input type="text" id="input" placeholder="wpisz">
+				<div id="buttons">
+					<button type="button" class="btn btn-slide-left" onclick="removeLastLocal()">usun ostatni</button>
+					<button type="button" class="btn btn-slide-left" onclick="saveLocal()">akceptuj</button>
+					<button type="button" class="btn btn-one" onclick="removeLocal()">usun wszystko</button>
+				</div>
+				<input type="text" id="input-value" placeholder="nie widac mnie">
+			</div>
+			<div class="output" id="menu__right"></div>
+			<input type="checkbox" id="close" onclick="closeAlert()">
+			<div class="x-close-x">
+				<div></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="calendar.js"></script>
+</body>
+</html>

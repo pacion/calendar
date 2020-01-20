@@ -1,0 +1,293 @@
+*,::after,::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+	outline: none;
+}
+html{
+	height: 100%;
+}
+body{
+	height: 100vh;
+	width: 100vw;
+
+	background: rgb(255,255,255);	
+	background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(187,147,252,0.8) 26%, rgba(148,237,255,1) 50%);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.container{
+	width: 60%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+}
+.calendar{
+	background: #3f3f3f;
+	box-shadow: 0 0 4em black;
+	text-shadow: 0px 0px 4px #3f3f3f, 0 0 0.4em white, 0 0 0.5em tomato;
+	border-radius: 2rem;
+	display: block;
+	font-family: 'Roboto', sans-serif;
+
+	position: relative;
+}
+.calendar-off{
+	display: none !important;
+}
+.calendar__header{
+	font-size: 4rem;
+	text-align: center;
+}
+table{
+	border-top: 4px solid #7e7e7e;
+	font-size: 2rem;
+}
+th{
+	padding: 5px;
+}
+td{
+	padding: 20px;
+}
+table,
+th,
+td{
+	text-align: center;
+}
+.td-hover:hover{
+	background: #471b13 !important;
+	border-radius: 25em;
+	transition: all 0.1s ease-out;
+}
+#next,
+#previous{
+	position: absolute;
+	font-size: 40px;
+	background-color: #3f3f3f;
+	border: none;
+	width: 40px;
+	height: 100px;
+	color: #3f3f3f;
+	transition: all 0.2s ease;
+}
+#next:hover,
+#previous:hover{
+	background-color: #7e7e7e;
+	color: #7e7e7e;
+}
+
+#previous{
+	top: 45%;
+	left: -8%;
+	margin-left: -30px;
+
+	clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+#next{
+	right: -8%;
+	top: 45%;
+	margin-right: -30px;
+
+	clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+#input-value{
+	visibility: hidden;
+	position: relative;
+	top: -100000px;
+	left: -100000px;
+}
+#input{
+	border: none;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border-bottom: 2px solid gray;
+	padding: 14px 10px;
+	width: 60%;
+	outline: none;
+	color: white;
+	transition: 0.2s;
+}
+#input::placeholder{
+	color: gray;
+}
+#input:focus{
+	border-color: tomato;
+	width: 70%;
+}
+#buttons{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 50px;
+	z-index: 100;
+	opacity: 0;
+	line-height: 1.2 !important;
+}
+.x-close-x{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 50px;
+	z-index: 99;
+	line-height: 1.2 !important;
+}
+.x-close-x::before{
+	position: absolute;
+	top: -2px; 
+	left:8px;
+	content: '✖';
+	color: tomato;
+	font-size: 40px;
+	text-align: center;
+	transition: all 0.4s ease;
+}
+#close:hover + .x-close-x::before{
+	transform: rotate(90deg);
+	top: 0; 
+	left:10px;
+}
+#menu{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-family: 'Fjalla One', sans-serif;
+	letter-spacing: 1px;
+	line-height: 1.4rem;
+}
+#menu__right{
+	width: 50%;
+	height: 100%;
+	border-left: 1px solid gray;
+	color: tomato;
+	font-size: 1.2rem;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.btn{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.5s;
+  z-index: 2;
+}
+
+.btn::after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: tomato;
+  transition: all 0.5s;
+  z-index: -1;
+
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+}
+
+.btn:hover{
+  color: #fff;
+}
+
+.btn:hover:after{
+  width: 100%;
+}
+.alert-off{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	
+
+	animation: opacdown 0.01s ease-in;
+	animation-fill-mode: forwards;
+}
+.alert{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 4em black;
+
+	background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);
+	animation: 100s scroll infinite linear;
+}
+
+.alert-visible{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 4em black;
+
+	background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png);
+	animation: 100s scroll infinite linear !important;
+
+
+	animation: opacup 0.1s ease-in;
+	animation-fill-mode: forwards;
+}
+@keyframes scroll{
+  100%{
+    background-position: 0px -3000px;
+  }
+}
+@keyframes opacup{
+	0%{
+		visibility: hidden;
+		opacity: 0;
+	}
+	100%{
+		visibility: visible;
+		opacity: 1;
+	}
+}
+@keyframes opacdown{
+	0%{
+		visibility: visible;
+		opacity: 1;
+	}
+	100%{
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
